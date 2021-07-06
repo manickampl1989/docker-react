@@ -1,5 +1,7 @@
 sudo: required
 
+language: generic
+
 services:
   - Docker
   
@@ -7,4 +9,4 @@ before_install:
   - docker build -t developbuild -f Dockerfile.dev .
   
 script:
-  - docker run developbuild npm run test -- --coverage
+  - docker run -e CI=true developbuild npm run test
